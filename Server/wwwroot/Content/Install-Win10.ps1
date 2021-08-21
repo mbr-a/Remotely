@@ -28,7 +28,7 @@ else {
 	$Platform = "x86"
 }
 
-$InstallPath = "$env:ProgramFiles\Remotely"
+$InstallPath = "$env:ProgramFiles\QUIVIV-EdgeProtect\Remotely"
 
 function Write-Log($Message){
 	Write-Host $Message
@@ -118,7 +118,7 @@ function Install-Remotely {
 	}
 
 	Stop-Remotely
-	Get-ChildItem -Path "C:\Program Files\Remotely" | Where-Object {$_.Name -notlike "ConnectionInfo.json"} | Remove-Item -Recurse -Force
+	Get-ChildItem -Path "C:\Program Files\QUIVIV-EdgeProtect\Remotely" | Where-Object {$_.Name -notlike "ConnectionInfo.json"} | Remove-Item -Recurse -Force
 
 	Expand-Archive -Path "$env:TEMP\Remotely-Win10-$Platform.zip" -DestinationPath "$InstallPath"  -Force
 
