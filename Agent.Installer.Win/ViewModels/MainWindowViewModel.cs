@@ -238,7 +238,7 @@ namespace Remotely.Agent.Installer.Win.ViewModels
             {
                 var connectionInfoPath = Path.Combine(
                Path.GetPathRoot(Environment.SystemDirectory),
-                   "Program Files",
+                   "Program Files (x86)",
                    "QUIVIV-EdgeProtect",
                    "Remotely",
                    "ConnectionInfo.json");
