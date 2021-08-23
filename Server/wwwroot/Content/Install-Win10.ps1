@@ -118,7 +118,7 @@ function Install-Remotely {
 	}
 
 	Stop-Remotely
-	Get-ChildItem -Path "C:\Program Files\QUIVIV-EdgeProtect\Remotely" | Where-Object {$_.Name -notlike "ConnectionInfo.json"} | Remove-Item -Recurse -Force
+	Get-ChildItem -Path "C:\Program Files (x86)\QUIVIV-EdgeProtect\Remotely" | Where-Object {$_.Name -notlike "ConnectionInfo.json"} | Remove-Item -Recurse -Force
 
 	Expand-Archive -Path "$env:TEMP\Remotely-Win10-$Platform.zip" -DestinationPath "$InstallPath"  -Force
 
@@ -139,7 +139,7 @@ function Install-Remotely {
 	Start-Process -FilePath "cmd.exe" -ArgumentList "/c sc.exe failure `"Remotely_Service`" reset=5 actions=restart/5000" -Wait -WindowStyle Hidden
 	Start-Service -Name Remotely_Service
 
-	New-NetFirewallRule -Name "Remotely Desktop Unattended" -DisplayName "Remotely Desktop Unattended" -Description "The agent that allows screen sharing and remote control for Remotely." -Direction Inbound -Enabled True -Action Allow -Program "C:\Program Files\QUIVIV-EdgeProtect\Remotely\Desktop\Remotely_Desktop.exe" -ErrorAction SilentlyContinue
+	New-NetFirewallRule -Name "Remotely Desktop Unattended" -DisplayName "Remotely Desktop Unattended" -Description "The agent that allows screen sharing and remote control for Remotely." -Direction Inbound -Enabled True -Action Allow -Program "C:\Program Files (x86)\QUIVIV-EdgeProtect\Remotely\Desktop\Remotely_Desktop.exe" -ErrorAction SilentlyContinue
 }
 
 try {
